@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Шифрование и дешифрование на JS</title>
+    </head>
+<style>
+    textarea {
+        max-width: 100%;
+    }
+</style>
+<body>
+<script>
+function Encrypt(theText) {
+output = new String;
+Temp = new Array();
+Temp2 = new Array();
+TextSize = theText.length;
+for (i = 0; i < TextSize; i++) {
+	rnd = Math.round(Math.random() * 122) + 68;
+	Temp[i] = theText.charCodeAt(i) + rnd;
+	Temp2[i] = rnd;
+}
+for (i = 0; i < TextSize; i++) {
+	output += String.fromCharCode(Temp[i], Temp2[i]);
+}
+return output;
+}
+function unEncrypt(theText) {
+output = new String;
+Temp = новый массив();
+Temp2 = новый массив();
+textSize = theText.length;
+for (i = 0; i < textSize; i++) {
+	Temp[i] = theText.charCodeAt(i);
+	Temp2[i] = theText.charCodeAt(i + 1);
+}
+for (i = 0; i < textSize; i = i+2) {
+	output += String.fromCharCode(Temp[i] - Temp2[i]);
+}
+обратный выход;
+}
+</script>
+
+<form name="encform" onsubmit="return false;">
+<p>
+    <textarea name="box1" rows="5" cols="80">Введите текст для шифрования</textarea>
+</p>
+<p>
+    <input type="button" value="Зашифровать текст" onClick="this.form.box2.value=Encrypt(this.form.box1.value);">
+</p>
+<p>
+    <textarea name="box2" rows="5" cols="80"></textarea>
+</p>
+<p>
+    <input type="button" value="Расшифровать текст" onClick="this.form.box3.value=unEncrypt(this.form.box2.value);">
+</p>
+<p>
+    <textarea name="box3" rows="5" cols="80"></textarea>
+</p>
+</form>
+</body>
+</html
